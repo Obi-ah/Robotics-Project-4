@@ -1,0 +1,4 @@
+# ignore build artifacts
+install/
+build/
+log/
