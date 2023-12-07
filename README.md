@@ -35,15 +35,14 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
 ## Usage
 
 1. **Setup:**
-   - Connect all hardware components according to the documentation in the `docs/hardware/README.md` folder.
-   - Install any required dependencies as specified in the `code/README.md`.
+   - Connect all hardware components according to the documentation in the `docs/README.md` folder.
+   - Install any required dependencies as specified in the `docs/README.md`.
 
 2. **Running the Robot:**
-   - Follow the instructions in the `code/README.md` to start the robot.
-   - Ensure that the robot is calibrated and the environment is mapped.
+   - Follow the instructions in the `doc/README.md` to start the robot.
 
 3. **Emergency stop:**
-   - Command the robot to return to the starting point with the retrieved object.
+   - Stop the robot with a priority control signal. See details in `docs/README.md`
 
 ## Contributors
 
