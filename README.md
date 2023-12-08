@@ -24,12 +24,13 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
 
 ## Repository Structure
 
-- **docs/ :** Detailed project documentation.
+- **docs/ :** Project documentation.
   - *hardware:* Documentation related to the hardware design and configuration.
   - *software:* Documentation of intended software implementations to meet requirements.
 
-- **src/ :** Contains the source code for the robot's control and navigation.
-  - *README.md:* Instructions for running and modifying the code.
+- **src/ :** Source code for the robot's control and navigation.
+
+- **ML_models/ :** Model training and data cleaning algorithms,  datasets and analytics.
 
 
 ## Usage
