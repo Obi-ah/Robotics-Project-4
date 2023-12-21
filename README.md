@@ -26,7 +26,7 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
 
 - **docs/ :** Project documentation.
   - *hardware:* Documentation related to the hardware design and configuration.
-  - *software:* Documentation of intended software implementations to meet requirements.
+  - *software:* Documentation of intended software implementations to meet requirements. (work in progress)
 
 - **src/ :** Source code for the robot's control and navigation.
 
@@ -40,10 +40,10 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
    - Install any required dependencies as specified in the `docs/README.md`.
 
 2. **Running the Robot:**
-   - Follow the instructions in the `doc/README.md` to start the robot.
+   - Instructions to start the robot will be updated in the `doc/README.md` .
 
 3. **Emergency stop:**
-   - Stop the robot with a priority control signal. See details in `docs/README.md`
+   - Instructions to stop the robot with a priority control signal will be updated in `docs/README.md`
 
 ## Contributors
 
