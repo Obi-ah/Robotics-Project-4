@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="leo_rover">
+
+  <xacro:include filename="$(find real_leo)/urdf/macros.xacro"/>
+
+  <xacro:leo />
+
+</robot>
