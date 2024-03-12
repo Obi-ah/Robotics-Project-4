@@ -3,6 +3,25 @@ from apriltag import Detector, DetectorOptions
 import pyrealsense2 as rs
 import numpy as np
 
+# Extract rotation matrix (3x3) and translation vector (3x1)
+R = lambda T: T[:3, :3]
+t = lambda T: T[:3, 3]
+
+# Convert rotation matrix to Euler angles (roll, pitch, yaw)
+def rotation_matrix_to_euler_angles(R):
+    sy = np.sqrt(R[0, 0] ** 2 + R[1, 0] ** 2)
+    singular = sy < 1e-6
+
+    if not singular:
+        x = np.arctan2(R[2, 1], R[2, 2])
+        y = np.arctan2(-R[2, 0], sy)
+        z = np.arctan2(R[1, 0], R[0, 0])
+    else:
+        x = np.arctan2(-R[1, 2], R[1, 1])
+        y = np.arctan2(-R[2, 0], sy)
+        z = 0
+
+    return np.array([x, y, z])
 
 # Configure depth and color streams
 pipeline = rs.pipeline()
@@ -72,7 +91,15 @@ while True:
         Y = distance * (center[1] - ppy) / fy
         Z = distance
 
-        print(f'X: {X}\nY: {Y}\nZ: {Z}\n\n\n')
+       # Calculate euler angles
+        M = detector.detection_pose(tag, (fx,fy,ppx, ppy))[0]
+        euler_angles = rotation_matrix_to_euler_angles(R(M))
+        euler_angles_deg = np.degrees(euler_angles)
+        theta_x, theta_y, theta_z = euler_angles_deg
+
+
+        print(f'Position vector: \nX: {X}\nY: {Y}\nZ: {Z}\n\n')
+        print(f'Euler angles: \ntheta_x: {theta_x}\ntheta_y: {theta_y}\ntheta_z: {theta_z}\n\n\n')
 
 
     cv2.namedWindow('image', cv2.WINDOW_NORMAL)
