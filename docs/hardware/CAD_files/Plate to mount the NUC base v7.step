@@ -10,11 +10,11 @@ FILE_DESCRIPTION(
 
 FILE_NAME(
 /* name */ 'Plate to mount the NUC base v7.step',
-/* time_stamp */ '2023-12-08T09:45:22Z',
+/* time_stamp */ '2024-03-14T23:20:24Z',
 /* author */ (''),
 /* organization */ (''),
 /* preprocessor_version */ 'ST-DEVELOPER v20',
-/* originating_system */ 'Autodesk Translation Framework v12.14.0.127',
+/* originating_system */ 'Autodesk Translation Framework v12.20.1.177',
 
 /* authorisation */ '');
 
