@@ -34,7 +34,7 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
 
 
 ## Usage
-0. **Prequisition:**
+0. **Prerequisite:**
 ```bash
 sudo apt install ros-humble-navigation2
 sudo apt install ros-humble-nav2-bringup
