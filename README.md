@@ -34,13 +34,25 @@ The aim is to design, develop, and implement a mobile robot capable of autonomou
 
 
 ## Usage
-
+0. **Prequisition:**
+```bash
+sudo apt install ros-humble-navigation2
+sudo apt install ros-humble-nav2-bringup
+sudo apt install ros-humble-slam-toolbox
+sudo apt install ros-humble-rplidar-ros
+sudo apt install ros-humble-leo-viz
+sudo apt install ros-humble-ros-gz
+sudo apt install xterm
+sudo apt install qtbase5-dev libqt5svg5-dev libzmq3-dev libdw-dev
+sudo apt install ros-humble-imu-filter-madgwick
+sudo apt install ros-humble-robot-localization
+```
 1. **Setup:**
    - Connect all hardware components according to the documentation in the `docs/README.md` folder.
    - Install any required dependencies as specified in the `docs/README.md`.
 
 2. **Running the Robot:**
-   - Instructions to start the robot will be updated in the `doc/README.md` .
+   - Instructions to start the robot will be updated in the `docs/README.md` .
 
 3. **Emergency stop:**
    - Instructions to stop the robot with a priority control signal will be updated in `docs/README.md`
