@@ -11,7 +11,7 @@ This repository contains launch files and configurations for simulating and cont
 1. Clone this repository into your ROS 2 workspace:
 
     ```bash
-    git clone https://github.com/
+    git clone https://github.com/Obi-ah/Robotics-Project-4.git
     ```
 
 2. Build and source your ROS 2 workspace:
