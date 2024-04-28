@@ -68,24 +68,26 @@ class PosePublisher(Node):
 
       frames = self.pipeline.wait_for_frames()
 
-      aligned_frames = self.align.process(frames)
+      color_frame = frames.get_color_frame()
+
+      # align depth frames to color frames
+      aligned_frames = self.align.process(frames)    
       depth_frame = aligned_frames.get_depth_frame()
-      color_frame = aligned_frames.get_color_frame()
 
       # Get active profile from the pipeline
       profile = self.pipeline.get_active_profile()
-      depth_profile = profile.get_stream(rs.stream.depth)
+      rgb_profile = profile.get_stream(rs.stream.color)
 
       # Extract intrinsics from the stream profile
-      depth_intrinsics = depth_profile.as_video_stream_profile().get_intrinsics()
+      rgb_intrinsics = rgb_profile.as_video_stream_profile().get_intrinsics()
+      # print(f'depth_intr: {rgb_intrinsics}')
       
       # Obtain intrinsic values
-      ppx = depth_intrinsics.ppx
-      ppy = depth_intrinsics.ppy
-      fx = depth_intrinsics.fx
-      fy = depth_intrinsics.fy
-      # print('depth intrs',depth_intrinsics)
-
+      ppx = rgb_intrinsics.ppx
+      ppy = rgb_intrinsics.ppy
+      fx = rgb_intrinsics.fx
+      fy = rgb_intrinsics.fy
+      print('depth intrs',rgb_intrinsics)
       # Convert color data to OpenCV format
       color_image = np.asanyarray(color_frame.get_data())
       imggray = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)

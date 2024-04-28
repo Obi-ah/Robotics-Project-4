@@ -41,24 +41,26 @@ detector = Detector(options)
 while True:
     frames = pipeline.wait_for_frames()
 
-    aligned_frames = align.process(frames)
+    color_frame = frames.get_color_frame()
+
+    # align depth frames to color frames
+    aligned_frames = align.process(frames)    
     depth_frame = aligned_frames.get_depth_frame()
-    color_frame = aligned_frames.get_color_frame()
 
     # Get active profile from the pipeline
     profile = pipeline.get_active_profile()
-    depth_profile = profile.get_stream(rs.stream.depth)
+    rgb_profile = profile.get_stream(rs.stream.color)
 
     # Extract intrinsics from the stream profile
-    depth_intrinsics = depth_profile.as_video_stream_profile().get_intrinsics()
-    # print(f'depth_intr: {depth_intrinsics}')
+    rgb_intrinsics = rgb_profile.as_video_stream_profile().get_intrinsics()
+    # print(f'depth_intr: {rgb_intrinsics}')
     
     # Obtain intrinsic values
-    ppx = depth_intrinsics.ppx
-    ppy = depth_intrinsics.ppy
-    fx = depth_intrinsics.fx
-    fy = depth_intrinsics.fy
-    # print('depth intrs',depth_intrinsics)
+    ppx = rgb_intrinsics.ppx
+    ppy = rgb_intrinsics.ppy
+    fx = rgb_intrinsics.fx
+    fy = rgb_intrinsics.fy
+    print('depth intrs',rgb_intrinsics)
 
     # Convert color data to OpenCV format
     color_image = np.asanyarray(color_frame.get_data())
@@ -95,7 +97,7 @@ while True:
         Y = -distance * (center[1] - ppy) / fy
         Z = distance
 
-        # X2, Y2, Z = rs.rs2_deproject_pixel_to_point(depth_intrinsics, (center), distance)
+        X, Y, Z = rs.rs2_deproject_pixel_to_point(rgb_intrinsics, (center), distance)
 
         t_vec = np.array([X, Y, Z])
         t_vec = t_vec * 100        #change to centimeters
