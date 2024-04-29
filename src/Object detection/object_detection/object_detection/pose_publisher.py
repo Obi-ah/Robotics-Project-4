@@ -7,6 +7,10 @@ import pyrealsense2 as rs
 import numpy as np
 
 
+# Extract rotation matrix (3x3) and translation vector (3x1)
+R = lambda T: T[:3, :3]
+t = lambda T: T[:3, 3]
+
 # Convert rotation matrix to Quaternion
 def rotation_matrix_to_quaternion(R):
 
