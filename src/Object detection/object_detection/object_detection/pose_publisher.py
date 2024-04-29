@@ -1,20 +1,13 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Pose, Point, Quaternion
-# from detection_main import t_vec
 import cv2
 from apriltag import Detector, DetectorOptions
 import pyrealsense2 as rs
 import numpy as np
 
 
-# Extract rotation matrix (3x3) and translation vector (3x1)
-R = lambda T: T[:3, :3]
-t = lambda T: T[:3, 3]
-
 # Convert rotation matrix to Quaternion
-import numpy as np
-
 def rotation_matrix_to_quaternion(R):
 
     # Ensure the input matrix is a numpy array
@@ -134,7 +127,7 @@ class PosePublisher(Node):
          # euler_angles_deg = np.degrees(euler_angles)
          # theta_x, theta_y, theta_z = euler_angles_deg
          q = rotation_matrix_to_quaternion(R(M))
-         print(q)
+         # print(q)
 
          pose_msg = Pose()
          pose_msg.position = Point(x=t_vec[0], y=t_vec[1], z=t_vec[2])
