@@ -9,9 +9,15 @@ detector = Detector(options)
 
 cap = cv2.VideoCapture(0)
 
+fourcc = cv2.VideoWriter_fourcc(*'XVID')  # You can choose other codecs
+out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (640, 480))  # FPS, frame size
+
 while True:
     ret, frame = cap.read()
     img = frame
+
+    # Write frame to the output video
+    out.write(frame)
 
     imggray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     results = detector.detect(imggray)

@@ -92,6 +92,7 @@ class PosePublisher(Node):
 
        text_1 = ''
        text_2 = ''
+       text_3 = ''
        # Mark boundaries and center
        if results:
            tag = results[0]
@@ -147,6 +148,8 @@ class PosePublisher(Node):
 
            text_1 = f"Position:  ({t_vec[0]:.2f},  {t_vec[1]:.2f},  {t_vec[2]:.2f})"
            # text_2 = f'Orientation:  ({theta_x:.2f},  {theta_y:.2f},  {theta_z:.2f})'
+           text_3 = 'Target detected'
+
 
        cv2.namedWindow('image', cv2.WINDOW_FREERATIO)
        cv2.resizeWindow('image', 1200, 950)
@@ -156,12 +159,15 @@ class PosePublisher(Node):
 
        position_1 = (50, 50)  # (x, y) coordinates
        position_2 = (50, 70)  # (x, y) coordinates
+       position_3 = (50, 30)  # (x, y) coordinates
+
        font = cv2.FONT_HERSHEY_SIMPLEX
        scale = 0.5
        color = (255, 102, 255)  # BGR color format
        thickness = 1
 
        # Add text to the frame
+       cv2.putText(frame, text_3, position_3, font, scale, color, thickness)
        cv2.putText(frame, text_1, position_1, font, scale, color, thickness)
        # cv2.putText(frame, text_2, position_2, font, scale, color, thickness)
 
